@@ -1,0 +1,27 @@
+.header {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 3px solid black;
+}
+
+.headerTitle {
+    font-size: 2rem;
+}
+
+.headerAdd {
+    cursor: pointer;
+    font-size: 1.5rem;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: .5rem;
+    color: inherit;
+    text-decoration: none;
+}
+
+.headerAdd:hover{
+    background-color: black;
+    color: white;
+}
