@@ -1,0 +1,80 @@
+.main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    gap: 1rem;
+    padding: 1.5rem;
+
+    .log {
+        width: 750px;
+        
+        padding: 1rem;
+        border: 2px solid black;
+        border-radius: 25px;
+
+        .logHeader{
+
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+
+            .logGame {
+                font-size: 2rem;
+                text-transform: uppercase;
+            }
+
+            h4 {
+                font-size: 2rem;
+            }
+        }
+
+        .logContainer {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-top: .5rem;
+
+            .logStats {
+                width: 30%;
+
+                div {
+                    text-align: left;
+                    margin-bottom: .5rem;
+
+                    h3 {
+                        font-size: 1rem;
+                    }
+
+                    h4 {
+                        font-size: 1.25rem;
+                    }
+                }
+            }
+            .logReview {
+                width: 70%;
+                font-size: 1.25rem;
+            }
+        }
+
+        .logButtons {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 1.5rem;
+
+            .btn {
+                background-color: white;
+                border: 2px solid black;
+                border-radius: 5px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .btn:hover {
+                background-color: black;
+                color: white;
+            }
+        }
+    }
+}
