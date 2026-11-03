@@ -19,3 +19,9 @@ export async function getLogById(id: number): Promise<Logs | null> {
 
     return logs[0] ?? null;
 }
+export async function cadastrarJogo(jogo: Omit<Logs, "id">) {
+    await db.query(
+        "INSERT INTO log (jogo, data_termino, analise, nota, status) VALUES (?, ?, ?, ?, ?)",
+        [jogo.jogo, jogo.data_termino, jogo.analise, jogo.nota, jogo.status]
+    );
+}
