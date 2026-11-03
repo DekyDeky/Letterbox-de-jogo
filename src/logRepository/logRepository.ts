@@ -8,3 +8,14 @@ export async function selectAllLogs(): Promise<Logs[]> {
 
     return rows as Logs[];
 }
+
+export async function getLogById(id: number): Promise<Logs | null> {
+    const [row] = await db.query(
+        "SELECT * FROM log WHERE log_id = ?",
+        [id]
+    )
+
+    const logs = row as Logs[]
+
+    return logs[0] ?? null;
+}

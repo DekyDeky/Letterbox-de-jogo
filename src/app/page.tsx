@@ -42,7 +42,10 @@ export default function Home() {
               <div className={styles.logStats}>
                 <div>
                   <h3>Última vez Jogado</h3>
-                  <h4>{new Date(log.data_termino).toLocaleDateString(undefined, options)}</h4>
+                  <h4>{log?.data_termino
+                    ? new Date(log.data_termino).toLocaleDateString("pt-BR")
+                    : ""}
+                  </h4>
                 </div>
                 <div>
                   <h3>Status</h3>
