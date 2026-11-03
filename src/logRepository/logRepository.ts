@@ -19,3 +19,10 @@ export async function getLogById(id: number): Promise<Logs | null> {
 
     return logs[0] ?? null;
 }
+
+export async function deleteLog(id: number): Promise<void> {
+    await db.query(
+        "DELETE FROM log WHERE log_id = ?",
+        [id]
+    );
+}
