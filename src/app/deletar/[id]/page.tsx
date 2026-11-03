@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { Logs } from "@/types/Logs";
-import style from './addLog.module.scss'
+import style from './addLog.module.scss';
 
 export default function EditOrDeleteLog() {
     const [log, setLog] = useState<Logs | null>(null);
@@ -10,11 +10,9 @@ export default function EditOrDeleteLog() {
     const router = useRouter();
     const id = params.id;
 
-    async function loadLog(){
+    async function loadLog() {
         const response = await fetch("/api/logs/" + id);
         const data = await response.json();
-        console.log(data);
-
         setLog(data);
     }
 
@@ -37,7 +35,6 @@ export default function EditOrDeleteLog() {
         });
     }
 
-    // Função de deletar utilizando exatamente o ID da rota dinâmica
     async function handleDelete() {
         if (!confirm("Tem certeza que deseja excluir este registro?")) return;
 
@@ -47,16 +44,36 @@ export default function EditOrDeleteLog() {
 
         if (response.ok) {
             alert('Item removido com sucesso!');
-            router.push('/'); // Redireciona para a página principal após deletar
+            router.push('/');
         } else {
             alert('Erro ao tentar remover o item.');
         }
     }
 
-    return(
+    async function handleUpdate(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        if (!log) return;
+
+        const response = await fetch(`/api/logs/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(log)
+        });
+
+        if (response.ok) {
+            alert('Jogo atualizado com sucesso!');
+            router.push('/');
+        } else {
+            alert('Erro ao atualizar o jogo.');
+        }
+    }
+
+    return (
         <main className={style.addLog}>
             <h1 className={style.title}>Gerenciar Jogo</h1>
-            <form className={style.form} onSubmit={(e) => e.preventDefault()}>
+            <form className={style.form} onSubmit={handleUpdate}>
                 <div className={style.line}>
                     <div className={style.group}>
                         <label className={style.label}>Jogo</label>
@@ -82,7 +99,7 @@ export default function EditOrDeleteLog() {
                     <div className={style.group}>
                         <label className={style.label}>Status do Jogo</label>
                         <select name="status" className={style.select} value={log?.status ?? ""} onChange={handleChange}>
-                            <option>...</option>
+                            <option value="">...</option>
                             <option value="jogando">Jogando</option>
                             <option value="finalizado">Finalizado</option>
                             <option value="100">100%</option>
@@ -106,5 +123,5 @@ export default function EditOrDeleteLog() {
                 </div>
             </form>
         </main>
-    )
+    );
 }
