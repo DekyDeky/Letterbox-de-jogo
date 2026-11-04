@@ -55,8 +55,8 @@ export default function Home() {
               <p className={styles.logReview}>{log.analise}</p>
             </div>
             <div className={styles.logButtons}>
-              <button className={styles.btn}><BsFillPencilFill /></button>
-              <button className={styles.btn}><BsFillTrash3Fill/></button>
+              <Link href={"/editar/" + log.id} className={styles.btn} aria-label="Editar jogo"><BsFillPencilFill /></Link>
+              <Link href={"/deletar/" + log.id} className={styles.btn} aria-label="Excluir jogo"><BsFillTrash3Fill/></Link>
             </div>
           </div>
         )
