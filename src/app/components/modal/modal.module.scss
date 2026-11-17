@@ -1,0 +1,68 @@
+.bgContainer {
+
+    position: absolute;
+    min-height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    background-color: rgba(0, 0, 0, 0.75);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+.modalContainer {
+    border: 2px solid var(--font-color);
+    color: var(--font-color);
+    background-color: black;
+
+    width: 50%;
+    height: fit-content;
+
+
+    .modalHeader {
+        padding: .5rem;
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--font-color);
+
+        .title {
+            color: black;
+        }
+
+        .xContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+            border: none;
+            color: black;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    }
+
+    .modalMain {
+        padding: .5rem;
+        font-size: 1.5rem;
+    }
+
+    .modalFooter {
+        padding: .5rem;
+        .buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 2rem;
+            align-items: center;
+
+            button {
+                margin: 0;
+            }
+        }
+    }
+}
+}

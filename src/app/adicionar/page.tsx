@@ -22,7 +22,8 @@ export default function AdicionarJogo(){
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     jogo: dados.get("jogo"),
-                    data_termino: dados.get("data_termino"),
+                    ultima_vez: dados.get("ultima_vez"),
+                    data_termino: dados.get("data_termino") == '' ? null : dados.get("data_termino"),
                     analise: dados.get("analise"),
                     nota: Number(dados.get("nota")),
                     status: dados.get("status")
@@ -47,14 +48,18 @@ export default function AdicionarJogo(){
         <main className={style.addLog}>
             <h1 className={style.title}>Adicionar à Estante</h1>
             <form className={style.form} onSubmit={enviarFormulario}>
+                <div className={style.group}>
+                    <label className={style.label}>Jogo</label>
+                    <input type='text' name='jogo' maxLength={255} required className={style.input}/>
+                </div>
                 <div className={style.line}>
                     <div className={style.group}>
-                        <label className={style.label}>Jogo</label>
-                        <input type='text' name='jogo' maxLength={255} required className={style.input}/>
+                        <label className={style.label}>Última vez que jogou</label>
+                        <input type='date' name='ultima_vez' min='1000-01-01' max='9999-12-31' required className={style.input}/>
                     </div>
                     <div className={style.group}>
-                        <label className={style.label}>Última vez que jogou</label>
-                        <input type='date' name='data_termino' min='1000-01-01' max='9999-12-31' required className={style.input}/>
+                        <label className={style.label}>Jogo finalizado em</label>
+                        <input type='date' name='data_termino' min='1000-01-01' max='9999-12-31' className={style.input}/>
                     </div>
                 </div>
                 <div className={style.group}>

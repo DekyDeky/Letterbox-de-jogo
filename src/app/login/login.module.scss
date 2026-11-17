@@ -1,0 +1,20 @@
+.login {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--font-color);
+
+    .siteTitle {
+        font-size: 4rem;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    .loginTitle  {
+        font-size: 3rem;
+        text-align: center;
+        margin-top: 1rem;
+    }
+} 

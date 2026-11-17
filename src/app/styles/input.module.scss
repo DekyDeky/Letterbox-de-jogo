@@ -1,0 +1,61 @@
+.group {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+
+    .label {
+        font-size: 1.75rem;
+    }
+
+    .input {
+        margin-top: .5rem;
+        background-color: transparent;
+        border: 2px solid var(--font-color);
+        color: var(--font-color);
+        border-radius: 10px;
+        font-size: 1.75rem;
+    }
+}
+
+.btn {
+    background-color: black;
+    display: block;
+    font-size: 2rem;
+    padding: .5rem 2rem;
+    border: 2px solid var(--font-color);
+    color: var(--font-color);
+    border-radius: 10px;
+    cursor: pointer;
+
+
+    &:before {
+    background: repeating-linear-gradient(
+      black 0px,
+      var(--font-color) 2px
+    );
+    }
+    &:after {
+        background: repeating-linear-gradient(
+        90deg,
+        var(--crt-red) 1px,
+        var(--crt-green) 2px,
+        var(--crt-blue) 3px
+        );
+    }
+}
+
+.btn:hover {
+    background-color: var(--font-color);
+    color: black;
+}
+
+.link {
+    margin-top: 1rem;
+    color: var(--font-color);
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}

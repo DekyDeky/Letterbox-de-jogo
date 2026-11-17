@@ -49,7 +49,7 @@ export async function POST(requisicao: Request) {
             !jogo ||
             typeof jogo.jogo !== "string" || !jogo.jogo.trim() ||
             typeof jogo.analise !== "string" || !jogo.analise.trim() ||
-            typeof jogo.data_termino !== "string" || !jogo.data_termino ||
+            typeof jogo.ultima_vez !== "string" || !jogo.ultima_vez ||
             !Number.isInteger(jogo.nota) ||
             !["jogando", "finalizado", "100", "desisti"].includes(jogo.status)
         ) {

@@ -1,10 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Coral+Pixels&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Nothing+You+Could+Do&display=swap');
 @import "tailwindcss";
 
 :root {
   --font-general: "Merriweather", serif;
-  --font-cursive:  "Nothing You Could Do", cursive;
-  --font-pixel: "Coral Pixels", serif;;
+  --font-cursive: "Caveat", cursive;
+  --font-pixel: "Coral Pixels", serif;
+
+  --font-color: #39ff14;
+
+  --crt-red: rgb(218, 49, 49);
+  --crt-green: rgb(112, 159, 115);
+  --crt-blue: rgb(40, 129, 206);
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -57,7 +62,39 @@ table {
 }
 
 html {
-  font-family: var(--font-general);
+	background-color: rgb(25, 25, 30);
+  text-shadow: 0 0 0.2em currentColor, 1px 1px rgba(255, 0, 255, 0.5),
+    -1px -1px rgba(0, 255, 255, 0.4);
+  position: relative;
+  &:before,
+  &:after {
+    content: "";
+    transform: translateZ(0);
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
+
+  &:before {
+    background: repeating-linear-gradient(
+      black 0px,
+      var(--font-color) 2px
+    );
+  }
+  &:after {
+    background: repeating-linear-gradient(
+      90deg,
+      var(--crt-red) 1px,
+      var(--crt-green) 2px,
+      var(--crt-blue) 3px
+    );
+  }
 }
 
 .headerAdd {

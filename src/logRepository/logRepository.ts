@@ -42,7 +42,7 @@ export async function updateLog(id: number, data: Partial<Logs>): Promise<void> 
 }
 export async function cadastrarJogo(jogo: Omit<Logs, "id">) {
     await db.query(
-        "INSERT INTO log (jogo, data_termino, analise, nota, status) VALUES (?, ?, ?, ?, ?)",
-        [jogo.jogo, jogo.data_termino, jogo.analise, jogo.nota, jogo.status]
+        "INSERT INTO log (jogo, data_termino, ultima_vez, analise, nota, status) VALUES (?, ?, ?, ?, ?, ?)",
+        [jogo.jogo, jogo.data_termino, jogo.ultima_vez, jogo.analise, jogo.nota, jogo.status]
     );
 }
