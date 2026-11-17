@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 02/11/2026 às 20:16
+-- Tempo de geração: 17/11/2026 às 22:46
 -- Versão do servidor: 11.8.8-MariaDB
 -- Versão do PHP: 8.5.10
 
@@ -30,10 +30,25 @@ SET time_zone = "+00:00";
 CREATE TABLE `log` (
   `log_id` int(11) NOT NULL,
   `jogo` varchar(255) NOT NULL,
-  `data_termino` date NOT NULL,
-  `analise` varchar(500) NOT NULL,
-  `nota` int(11) NOT NULL,
+  `data_termino` date DEFAULT NULL,
+  `ultima_vez` date NOT NULL,
+  `analise` varchar(500) DEFAULT NULL,
+  `nota` int(11) DEFAULT NULL,
   `status` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `users`
+--
+
+CREATE TABLE `users` (
+  `id_user` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `birth` date NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
@@ -47,6 +62,12 @@ ALTER TABLE `log`
   ADD PRIMARY KEY (`log_id`);
 
 --
+-- Índices de tabela `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id_user`);
+
+--
 -- AUTO_INCREMENT para tabelas despejadas
 --
 
@@ -54,7 +75,13 @@ ALTER TABLE `log`
 -- AUTO_INCREMENT de tabela `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de tabela `users`
+--
+ALTER TABLE `users`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

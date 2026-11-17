@@ -35,7 +35,7 @@ export default function Registrar(){
                 </div>
                 <button className={`${VT.className} ${input.btn}`}>Entrar</button>
             </form>
-            <a href='#' className={input.link}>Criar uma conta</a>
+            <a href='/login' className={input.link}>Voltar Login</a>
         </main>
     )
 }

@@ -64,12 +64,12 @@ export default function AdicionarJogo(){
                 </div>
                 <div className={style.group}>
                     <label className={style.label}>Análise do Jogo</label>
-                    <textarea name="analise" maxLength={500} required className={style.textarea}></textarea>
+                    <textarea name="analise" maxLength={500} className={style.textarea}></textarea>
                 </div>
                 <div className={style.line}>
                     <div className={style.group}>
                         <label className={style.label}>Nota</label>
-                        <input type="number" name="nota" step="1" required className={style.input}/>
+                        <input type="number" name="nota" step="1" className={style.input}/>
                     </div>
                     <div className={style.group}>
                         <label className={style.label}>Status do Jogo</label>
