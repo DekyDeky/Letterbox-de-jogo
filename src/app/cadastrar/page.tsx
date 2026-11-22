@@ -14,26 +14,26 @@ export default function Registrar(){
                 <h1 className={`${styles.siteTitle}`}>ShelfBox</h1>
                 <h2 className={styles.registerTitle}>Cadastrar-Se</h2>
                 <div className={input.group}>
-                    <label htmlFor="inputUsername" className={input.label}>Apelido</label>
-                    <input type="text" name="inputUsername" className={input.input}/>
+                    <label htmlFor="username" className={input.label}>Apelido</label>
+                    <input type="text" name="username" className={`${VT.className} ${input.input}`}/>
                 </div>
                 <div className={input.group}>
-                    <label htmlFor="inputEmail" className={input.label}>E-mail</label>
-                    <input type="email" name="inputEmail" className={input.input}/>
+                    <label htmlFor="email" className={input.label}>E-mail</label>
+                    <input type="email" name="email" className={`${VT.className} ${input.input}`}/>
                 </div>
                 <div className={input.group}>
-                    <label htmlFor="inputBirth" className={input.label}>Data de Nascimento</label>
-                    <input type="date" name="inputBirth" className={input.input}/>
+                    <label htmlFor="birth" className={input.label}>Data de Nascimento</label>
+                    <input type="date" name="birth" className={`${VT.className} ${input.input}`}/>
                 </div>
                 <div className={input.group}>
-                    <label htmlFor="inputPassword" className={input.label}>Senha</label>
-                    <input type="password" name="inputPassword" className={input.input}/>
+                    <label htmlFor="password" className={input.label}>Senha</label>
+                    <input type="password" name="password" className={`${VT.className} ${input.input}`}/>
                 </div>
                 <div className={input.group}>
-                    <label htmlFor="inputConfPassword" className={input.label}>Confirmar Senha</label>
-                    <input type="password" name="inputConfPassword" className={input.input}/>
+                    <label htmlFor="confPassword" className={input.label}>Confirmar Senha</label>
+                    <input type="password" name="confPassword" className={`${VT.className} ${input.input}`}/>
                 </div>
-                <button className={`${VT.className} ${input.btn}`}>Entrar</button>
+                <button className={`${VT.className} ${input.btn}`}>Cadastrar</button>
             </form>
             <a href='/login' className={input.link}>Voltar Login</a>
         </main>

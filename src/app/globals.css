@@ -95,6 +95,8 @@ html {
       var(--crt-blue) 3px
     );
   }
+
+  min-height: 100vh;
 }
 
 .headerAdd {
