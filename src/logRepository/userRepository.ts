@@ -1,6 +1,9 @@
 import db from '@/lib/db';
 import { User } from '@/types/Users';
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 export async function selectAllUsers(): Promise<User[]> {
     const [rows] = await db.query(
         "SELECT id_user AS id, username, birth, email FROM users ORDER BY id_user DESC"
@@ -51,8 +54,22 @@ export async function updateUserPassword(id: number, data: Partial<User>): Promi
 
 
 export async function PostUser(user: Omit<User, "id">){
+
+    const newPassword = await bcrypt.hash(user.password, saltRounds);
+
     await db.query(
         "INSERT INTO users (username, birth, email, password) VALUES (?, ?, ?, ?)",
-        [user.username, user.birth, user.email, user.password]
+        [user.username, user.birth, user.email, newPassword]
     );
+}
+
+export async function Login(username: string) {
+    const [rows] = await db.query(
+        "SELECT password FROM users WHERE username = ?",
+        [username]
+    );
+
+    const row = (rows as { password: string }[])[0];
+
+    return row?.password ?? null;
 }

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^1.21.0",
+    "bcrypt": "^6.0.0",
     "mysql2": "^3.24.6",
     "next": "16.4.3",
     "react": "19.3.0",
