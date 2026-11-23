@@ -10,15 +10,18 @@ import ModalConfirm from './components/modal/modalConfirm';
 
 export default function Home() {
   const navegacao = useRouter()
-  const [usuario, setUsuario] = useState<string | null>(null);
+  const [id, setId] = useState<number | null>(null);
   const [logs, setLogs] = useState<Logs[]>([]);
 
-
-  async function loadLogs(){
-    const response = await fetch("/api/logs");
+  async function loadLogsByUser(id: number | null){
+    if(!id) {
+      console.error("Nenhum id fornecido!")
+      return
+    }
+    const response = await fetch("/api/logs/user/" + String(id));
     const data = await response.json();
 
-    console.log(data);
+    console.log(data)
 
     setLogs(data);
   }
@@ -35,11 +38,12 @@ export default function Home() {
 
         const dados = await resposta.json();
 
-        setUsuario(dados.username);
+        setId(Number(dados.usuario.id));
+
+        await loadLogsByUser(Number(dados.usuario.id));
     }
 
     verificarLogin();
-    loadLogs();
   }, []);
 
   return (

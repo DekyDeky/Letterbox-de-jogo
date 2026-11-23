@@ -4,7 +4,6 @@ import { verificarToken } from "@/lib/session";
 
 export async function GET() {
     const cookieStore = await cookies();
-
     const token = cookieStore.get("session")?.value;
 
     if (!token) {
@@ -14,17 +13,19 @@ export async function GET() {
         );
     }
 
-    const username = await verificarToken(token);
+    const usuario = await verificarToken(token);
 
-    if (!username) {
+    if (!usuario) {
         return NextResponse.json(
             { logado: false },
             { status: 401 }
         );
     }
 
+    console.log(usuario)
+
     return NextResponse.json({
         logado: true,
-        username
+        usuario : usuario
     });
 }

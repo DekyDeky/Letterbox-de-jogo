@@ -7,6 +7,7 @@ export default function AdicionarJogo(){
     const navegacao = useRouter();
     const [enviando, setEnviando] = useState(false);
     const [erro, setErro] = useState("");
+    const [userID, setUserID] = useState(0)
 
     useEffect(() => {
         async function verificarLogin() {
@@ -17,6 +18,9 @@ export default function AdicionarJogo(){
                 navegacao.refresh();
                 return;
             }
+
+            const dados = await resposta.json()
+            setUserID(Number(dados.usuario.id))
         }
 
         verificarLogin();
@@ -25,6 +29,11 @@ export default function AdicionarJogo(){
     async function enviarFormulario(evento: React.FormEvent<HTMLFormElement>) {
         evento.preventDefault();
         if (enviando) return;
+        if(userID === 0){
+            setErro("ID de usuário não identificado!")
+            console.log(erro)
+            return
+        }
 
         const dados = new FormData(evento.currentTarget);
         setEnviando(true);
@@ -40,7 +49,8 @@ export default function AdicionarJogo(){
                     data_termino: dados.get("data_termino") == '' ? null : dados.get("data_termino"),
                     analise: dados.get("analise"),
                     nota: Number(dados.get("nota")),
-                    status: dados.get("status")
+                    status: dados.get("status"),
+                    id_user : userID
                 })
             });
 

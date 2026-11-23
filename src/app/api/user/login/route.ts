@@ -33,7 +33,7 @@ export async function POST(
 
         const resultado = await bcrypt.compare(
             user.password,
-            passwordBD
+            passwordBD.password
         );
 
         if (!resultado) {
@@ -43,7 +43,9 @@ export async function POST(
             );
         }
 
-        const token = await criarToken(user.username);
+        console.log(passwordBD)
+
+        const token = await criarToken(passwordBD.id_user, passwordBD.username);
 
         const resposta = NextResponse.json(
             { mensagem: "Logado com sucesso!" },

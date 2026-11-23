@@ -5,5 +5,6 @@ export type Logs = {
     ultima_vez: string,
     analise: string,
     nota: number,
-    status: string
+    status: string,
+    id_user: number
 }

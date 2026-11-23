@@ -25,7 +25,8 @@ export async function POST(requisicao: Request) {
             typeof jogo.analise !== "string" || !jogo.analise.trim() ||
             typeof jogo.ultima_vez !== "string" || !jogo.ultima_vez ||
             !Number.isInteger(jogo.nota) ||
-            !["jogando", "finalizado", "100", "desisti"].includes(jogo.status)
+            !["jogando", "finalizado", "100", "desisti"].includes(jogo.status) ||
+            !Number.isInteger(jogo.id_user)
         ) {
             return NextResponse.json(
                 { erro: "Preencha os campos corretamente." },

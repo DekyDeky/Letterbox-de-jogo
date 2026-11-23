@@ -65,11 +65,15 @@ export async function PostUser(user: Omit<User, "id">){
 
 export async function Login(username: string) {
     const [rows] = await db.query(
-        "SELECT password FROM users WHERE username = ?",
+        "SELECT id_user, username, password FROM users WHERE username = ?",
         [username]
     );
 
-    const row = (rows as { password: string }[])[0];
+    const row = (rows as {
+        id_user: number;
+        username: string;
+        password: string;
+    }[])[0];
 
-    return row?.password ?? null;
+    return row ?? null;
 }
