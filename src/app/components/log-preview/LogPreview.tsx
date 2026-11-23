@@ -25,7 +25,7 @@ export default function LogPreview({log, setLogs}: LogPreviewProps){
                 <div>
                     <h3>Última vez Jogado</h3>
                     <h4>{log?.data_termino
-                    ? new Date(log.data_termino).toLocaleDateString("pt-BR")
+                    ? new Date(log.ultima_vez).toLocaleDateString("pt-BR")
                     : ""}
                     </h4>
                 </div>

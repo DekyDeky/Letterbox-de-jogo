@@ -71,19 +71,29 @@ export default function EditLog() {
         <main className={style.addLog}>
             <h1 className={style.title}>Editar Jogo</h1>
             <form className={style.form} onSubmit={handleSubmit}>
+                <div className={style.group}>
+                    <label className={style.label}>Jogo</label>
+                    <input
+                        type="text"
+                        name="jogo"
+                        className={style.input}
+                        value={log?.jogo ?? ""}
+                        onChange={handleChange}
+                    />
+                </div>
                 <div className={style.line}>
                     <div className={style.group}>
-                        <label className={style.label}>Jogo</label>
+                        <label className={style.label}>Última vez que jogou</label>
                         <input
-                            type="text"
-                            name="jogo"
+                            type="date"
+                            name="ultima_vez"
                             className={style.input}
-                            value={log?.jogo ?? ""}
+                            value={log?.ultima_vez?.split("T")[0] ?? ""}
                             onChange={handleChange}
                         />
                     </div>
                     <div className={style.group}>
-                        <label className={style.label}>Última vez que jogou</label>
+                        <label className={style.label}>Jogo finalizado em</label>
                         <input
                             type="date"
                             name="data_termino"
