@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import style from './addLog.module.scss'
 
@@ -7,6 +7,20 @@ export default function AdicionarJogo(){
     const navegacao = useRouter();
     const [enviando, setEnviando] = useState(false);
     const [erro, setErro] = useState("");
+
+    useEffect(() => {
+        async function verificarLogin() {
+            const resposta = await fetch("/api/user/me");
+
+            if (!resposta.ok) {
+                navegacao.push("/login");
+                navegacao.refresh();
+                return;
+            }
+        }
+
+        verificarLogin();
+    }, []);
 
     async function enviarFormulario(evento: React.FormEvent<HTMLFormElement>) {
         evento.preventDefault();

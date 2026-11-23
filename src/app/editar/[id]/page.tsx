@@ -5,6 +5,7 @@ import { Logs } from "@/types/Logs";
 import style from './addLog.module.scss';
 
 export default function EditLog() {
+    const navegacao = useRouter()
     const [log, setLog] = useState<Logs | null>(null);
     const params = useParams<{ id: string }>();
     const router = useRouter();
@@ -17,6 +18,17 @@ export default function EditLog() {
     }
 
     useEffect(() => {
+        async function verificarLogin() {
+            const resposta = await fetch("/api/user/me");
+
+            if (!resposta.ok) {
+                navegacao.push("/login");
+                navegacao.refresh();
+                return;
+            }
+        }
+
+        verificarLogin();
         loadLog();
     }, [id]);
 

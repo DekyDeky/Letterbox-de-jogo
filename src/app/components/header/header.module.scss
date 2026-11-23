@@ -5,6 +5,12 @@
     justify-content: space-between;
 
     border-bottom: 3px solid var(--font-color);
+
+    .btns {
+
+        
+
+    }
 }
 
 .headerTitle {
@@ -20,6 +26,9 @@
     padding: .5rem;
     color: var(--font-color);
     text-decoration: none;
+    margin: 0 .5rem;
+    width: 100px;
+    background-color: black;
 }
 
 .headerAdd:hover{

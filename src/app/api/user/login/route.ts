@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Login } from "@/logRepository/userRepository";
+import { criarToken } from "@/lib/session";
 
 const bcrypt = require('bcrypt');
 
@@ -42,10 +43,22 @@ export async function POST(
             );
         }
 
-        return NextResponse.json(
+        const token = await criarToken(user.username);
+
+        const resposta = NextResponse.json(
             { mensagem: "Logado com sucesso!" },
             { status: 200 }
         );
+
+        resposta.cookies.set("session", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "lax",
+            path: "/",
+            maxAge: 60 * 60 * 24 * 7
+        });
+
+        return resposta;
         
     } catch (erro) {
         console.error(erro);
